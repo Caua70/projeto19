@@ -124,9 +124,9 @@ function draw() {
 }else if (gameState === END) {
     gameOver.visible = true;
     //Acrescente o código para mostrar o texto da instrução restart (reiniciar) aqui
-    textSize(0.5)
+    textSize(20)
     fill("black")
-    text("aperte a seta para cima para reiniciar",  100, 100)
+    text("aperte a seta para cima para reiniciar",  500, 200)
   
     path.velocityX = 0;
     mainCyclist.velocityY = 0;
@@ -142,13 +142,10 @@ function draw() {
     redCG.setLifetimeEach(-1);
 
     //escreva uma condição para chamar a função reset()
-    function reset(){
-      gameState = PLAY;
-      gameOver.visible = false;
-      mainCyclist.addAnimation("running");
-      pinkCG.destroyEach();
-      distance = 0;
+    if(keyDown(UP_ARROW)){
+      reset();
     }
+
 }
 }
 
@@ -180,6 +177,13 @@ function redCyclists(){
 }
 
 //criar função reset aqui
+function reset(){
+  gameState = PLAY;
+  gameOver.visible = false;
+  mainCyclist.addAnimation("running");
+  pinkCG.destroyEach();
+  distance = 0;
+}
 
 
 
